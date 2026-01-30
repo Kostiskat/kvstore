@@ -13,6 +13,9 @@ target/
 *.iml
 *.ipr
 
+### AOF File ###
+db.aof
+
 ### Eclipse ###
 .apt_generated
 .classpath

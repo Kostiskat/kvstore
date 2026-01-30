@@ -19,7 +19,6 @@ public class Client {
             System.out.println("Welcome to kvstore by ccute!");
 
             while (true) {
-                // 1. Show prompt
                 System.out.print("> ");
                 String inputLine = userInput.nextLine().trim();
 

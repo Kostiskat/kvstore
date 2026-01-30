@@ -6,21 +6,25 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Map;
 
-public class GetCommand extends BaseCommand {
-    public GetCommand() {
-        super(1, "GET <key>");
+public class DelCommand extends BaseCommand {
+
+    public DelCommand() {
+        super(1, "DEL <key>");
     }
 
     @Override
     protected void executeImpl(Map<String, String> db, String[] args, DataOutputStream out, AOFHandler aof) throws IOException {
-        // args[0] - key
         String key = args[0];
-        String value = db.get(key);
-        if(value != null) {
-            sendString(out, value);
-        } else {
-            sendError(out, "(nil)");
-        }
 
+        String previousValue = db.remove(key);
+
+        if (aof != null) {
+            aof.logCommand("DEL", args);
+        }
+        if(previousValue != null) {
+            sendOK(out);
+        } else {
+            sendString(out, "(nil)");
+        }
     }
 }
