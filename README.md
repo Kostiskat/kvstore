@@ -1,5 +1,5 @@
 # kvstore
-A key-value datastore written in Java, including a simple client for experimenting and testing.
+A key-value datastore written in Java, including a simple client for experimenting and testing. Uses Netty for quick and efficient client management that scaled to thousands of concurrent connections!
 
 Very much in-progress; currently only supports Strings (and partial int support) with more types coming soon!
 
