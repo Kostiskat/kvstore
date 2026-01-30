@@ -9,7 +9,7 @@ public class Client {
         System.out.println("Connecting to database...");
 
 
-        try (Socket socket = new Socket("localhost", 6380);
+        try (Socket socket = new Socket("localhost", 6379);
              DataInputStream in = new DataInputStream(socket.getInputStream());
              DataOutputStream out = new DataOutputStream(socket.getOutputStream());
              Scanner userInput = new Scanner(System.in)) {
