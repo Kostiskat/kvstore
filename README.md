@@ -11,4 +11,4 @@ Future updates will include a custom SDK so anyone can use it.
 - ``DEL <key>`` - Delete this key-value entry from the database.
 - ``INCR <key> [incr]`` - Increment an integer value by ``incr`` (default: 1)
 
-Runs on port 6380.
+Runs on port 6379 by default.
