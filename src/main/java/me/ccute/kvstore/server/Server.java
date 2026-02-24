@@ -15,8 +15,6 @@ import me.ccute.kvstore.server.storage.AOFHandler;
 import me.ccute.kvstore.server.utils.Logger;
 
 import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,9 +36,7 @@ public class Server {
         commands.put("INCR", new IncrCommand());
     }
 
-    static void main(String[] args) throws IOException {
-        // The database's main hashmap
-        String AOFPath = "data.db";
+    static void main() {
 
         try {
             aof.start();
