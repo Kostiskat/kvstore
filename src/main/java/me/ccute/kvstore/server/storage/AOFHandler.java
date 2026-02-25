@@ -6,10 +6,17 @@ import me.ccute.kvstore.server.utils.Logger;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class AOFHandler {
     private final File file;
     private DataOutputStream out;
+
+    // Holds up to 100,000 commands before writing to disk.
+    private final LinkedBlockingQueue<LogEntry> queue = new LinkedBlockingQueue<>(100000);
+    private volatile boolean running = true;
+
+
 
     public AOFHandler(String filename) {
         this.file = new File(filename);
@@ -17,24 +24,51 @@ public class AOFHandler {
 
     public void start() throws IOException {
         this.out = new DataOutputStream(new FileOutputStream(file, true));
+
+        Thread writerThread = new Thread(this::processQueue, "AOF-Background-Writer");
+        writerThread.setDaemon(true); // Ensures the JVM can exit if this is the only thread left
+        writerThread.start();
     }
 
-    public synchronized void logCommand(String commandName, String[] args) {
-        try {
-            byte[] cmdBytes = commandName.getBytes(StandardCharsets.UTF_8);
-            out.writeInt(cmdBytes.length);
-            out.write(cmdBytes);
+    public void logCommand(String commandName, String[] args) {
+        if (!running) return;
 
-            out.writeInt(args.length);
+        boolean accepted = queue.offer(new LogEntry(commandName, args));
+        if (!accepted) {
+            System.err.println(Logger.toLogMessage("WARNING! AOF Queue is full! Dropping log for " + commandName));
+        }
+    }
 
-            for (String arg : args) {
-                byte[] argBytes = arg.getBytes(StandardCharsets.UTF_8);
-                out.writeInt(argBytes.length);
-                out.write(argBytes);
+    private void processQueue() {
+        while (running || !queue.isEmpty()) {
+            try {
+                LogEntry entry = queue.take();
+
+                do {
+                    writeEntryToDisk(entry);
+                } while ((entry = queue.poll()) != null);
+
+                out.flush();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            } catch (IOException e) {
+                System.err.println(Logger.toLogMessage("Fatal error writing to AOF: " + e.getMessage()));
             }
-            out.flush();
-        } catch (Exception e) {
-            System.out.println(Logger.toLogMessage("Error logging command " + commandName));
+        }
+    }
+
+    private void writeEntryToDisk(LogEntry entry) throws IOException {
+        byte[] cmdBytes = entry.commandName.getBytes(StandardCharsets.UTF_8);
+        out.writeInt(cmdBytes.length);
+        out.write(cmdBytes);
+
+        out.writeInt(entry.args.length);
+
+        for (String arg : entry.args) {
+            byte[] argBytes = arg.getBytes(StandardCharsets.UTF_8);
+            out.writeInt(argBytes.length);
+            out.write(argBytes);
         }
     }
 
@@ -74,6 +108,10 @@ public class AOFHandler {
     }
 
     public void close() throws IOException {
+        running = false;
+        try { Thread.sleep(100); } catch (InterruptedException ignored) {}
         if (out != null) out.close();
     }
+
+    private record LogEntry(String commandName, String[] args) {}
 }
