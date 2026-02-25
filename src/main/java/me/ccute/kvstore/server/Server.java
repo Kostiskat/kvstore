@@ -58,7 +58,8 @@ public class Server {
                             }
                         })
                         .option(ChannelOption.SO_BACKLOG, 128)
-                        .childOption(ChannelOption.SO_KEEPALIVE, true);
+                        .childOption(ChannelOption.SO_KEEPALIVE, true)
+                        .childOption(ChannelOption.TCP_NODELAY, true);
 
                 System.out.println(Logger.toLogMessage("Database running on port 6379."));
 
