@@ -5,6 +5,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ReplayingDecoder;
 
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,25 +13,23 @@ public class KvStoreDecoder extends ReplayingDecoder<Void> {
 
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) {
-        System.out.println("Decoder received bytes: " + byteBuf.readableBytes());
-        String cmd = readUTF(byteBuf);
+        String cmd = readLengthPrefixedString(byteBuf);
 
         int argCount = byteBuf.readInt();
 
         List<String> args = new ArrayList<>();
-        for(int i = 0; i < argCount; i++) {
-            args.add(readUTF(byteBuf));
+        for (int i = 0; i < argCount; i++) {
+            args.add(readLengthPrefixedString(byteBuf));
         }
 
         Request request = new Request(cmd, args.toArray(new String[0]));
-        System.out.println("Decoder finished one packet. Command: " + cmd);
         list.add(request);
     }
 
-    private String readUTF(ByteBuf in) {
-        int len = in.readUnsignedShort(); // Java's writeUTF uses a short for length
-        byte[] bytes = new byte[len];
-        in.readBytes(bytes);
-        return new String(bytes); // Convert to String
+    private String readLengthPrefixedString(ByteBuf in) {
+        int len = in.readInt();
+        String s = in.toString(in.readerIndex(), len, StandardCharsets.UTF_8);
+        in.skipBytes(len);
+        return s;
     }
 }

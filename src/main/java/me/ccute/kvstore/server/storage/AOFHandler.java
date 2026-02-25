@@ -4,6 +4,7 @@ import me.ccute.kvstore.server.commands.BaseCommand;
 import me.ccute.kvstore.server.utils.Logger;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class AOFHandler {
@@ -20,15 +21,20 @@ public class AOFHandler {
 
     public synchronized void logCommand(String commandName, String[] args) {
         try {
-            out.writeUTF(commandName);
+            byte[] cmdBytes = commandName.getBytes(StandardCharsets.UTF_8);
+            out.writeInt(cmdBytes.length);
+            out.write(cmdBytes);
+
             out.writeInt(args.length);
+
             for (String arg : args) {
-                out.writeUTF(arg);
+                byte[] argBytes = arg.getBytes(StandardCharsets.UTF_8);
+                out.writeInt(argBytes.length);
+                out.write(argBytes);
             }
             out.flush();
-        } catch (IOException e) {
-            System.out.println(Logger.toLogMessage("Error while logging command " + commandName + "to file."));
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(Logger.toLogMessage("Error logging command " + commandName));
         }
     }
 
@@ -38,22 +44,28 @@ public class AOFHandler {
 
         int count = 0;
         try(DataInputStream in = new DataInputStream(new FileInputStream(file))) {
+            // This isn't infinite, as it eventually reaches the EOFException
             while (true) {
-                String cmdName = in.readUTF();
-                int argCount = in.readInt();
-                String[] args = new String[argCount];
-                for (int i = 0; i < argCount; i++) {
-                    args[i] = in.readUTF();
-                }
+               int cmdLen = in.readInt();
+               byte[] cmdBytes = new byte[cmdLen];
+               in.readFully(cmdBytes);
+               String cmdName = new String(cmdBytes, StandardCharsets.UTF_8);
 
-                BaseCommand cmd = commands.get(cmdName);
-                if(cmd != null) {
-                    // Replay the command execution
-                    // out = null -> Do NOT send any network response.
-                    // aof = null -> Do NOT log this command in the AOF again!
-                    cmd.execute(db, args, null, null);
-                    count++;
-                }
+               int argCount = in.readInt();
+               String[] args = new String[argCount];
+
+               for (int i = 0; i < argCount; i++) {
+                   int argLen = in.readInt();
+                   byte[] argBytes = new byte[argLen];
+                   in.readFully(argBytes);
+                   args[i] = new String(argBytes, StandardCharsets.UTF_8);
+               }
+
+               BaseCommand cmd = commands.get(cmdName);
+               if(cmd != null) {
+                   cmd.execute(db, args, null);
+                   count++;
+               }
             }
         } catch (EOFException e) {
             // End of file reached

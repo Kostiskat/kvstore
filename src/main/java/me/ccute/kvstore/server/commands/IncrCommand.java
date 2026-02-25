@@ -1,19 +1,15 @@
 package me.ccute.kvstore.server.commands;
 
-import me.ccute.kvstore.server.storage.AOFHandler;
-
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.Map;
 
-public class IncrCommand extends BaseCommand{
+public class IncrCommand extends BaseCommand {
 
     public IncrCommand() {
-        super(1, "INCR <key> [incr]");
+        super(1, "INCR <key> [increment]");
     }
 
     @Override
-    protected void executeImpl(Map<String, String> db, String[] args, DataOutputStream out, AOFHandler aof) throws IOException {
+    protected String executeImpl(Map<String, String> db, String[] args) {
         String key = args[0];
         long increment = 1;
 
@@ -21,32 +17,26 @@ public class IncrCommand extends BaseCommand{
             try {
                 increment = Long.parseLong(args[1]);
             } catch (NumberFormatException e) {
-                sendError(out, "value is not an integer or out of range");
-                return;
+                return "(error) ERR value is not an integer or out of range";
             }
         }
 
-
         String valStr = db.get(key);
-        long value = 0; // Default value to write if key doesn't exist
+        long currentValue = 0;
 
         if (valStr != null) {
             try {
-                value = Long.parseLong(valStr);
+                currentValue = Long.parseLong(valStr);
             } catch (NumberFormatException e) {
-                sendError(out, "value is not an integer or out of range");
-                return;
+                return "(error) ERR value is not an integer or out of range";
             }
         }
 
-        value += increment;
-        String newValue = String.valueOf(value);
-        db.put(key, newValue);
+        long newValue = currentValue + increment;
+        String newValueStr = String.valueOf(newValue);
 
-        if (aof != null) {
-            aof.logCommand("SET", new String[]{key, newValue});
-        }
+        db.put(key, newValueStr);
 
-        sendString(out, "(integer) " + newValue);
+        return "(integer) " + newValueStr;
     }
 }

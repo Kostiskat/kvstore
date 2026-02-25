@@ -2,7 +2,11 @@ package me.ccute.kvstore.client;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Scanner;
+
+import static me.ccute.kvstore.client.parser.Tokenizer.fastTokenize;
 
 public class Client {
     static void main() {
@@ -24,33 +28,33 @@ public class Client {
 
                 if(inputLine.isEmpty()) continue;
 
-                String[] parts = inputLine.split("\\s+");
-                String commandName = parts[0];
-                int argCount = parts.length - 1;
+                List<String> parts = fastTokenize(inputLine);
+                String commandName = parts.getFirst();
 
                 try {
-                    // -- SEND COMMAND --
+                    byte[] cmdBytes = commandName.getBytes(StandardCharsets.UTF_8);
+                    out.writeInt(cmdBytes.length);
+                    out.write(cmdBytes);
 
-                    out.writeUTF(commandName);
-                    out.writeInt(argCount);
+                    out.writeInt(parts.size() - 1);
 
-                    for(int i = 1; i < parts.length; i++) {
-                        out.writeUTF(parts[i]);
+                    for (int i = 1; i < parts.size(); i++) {
+                        byte[] argBytes = parts.get(i).getBytes(StandardCharsets.UTF_8);
+                        out.writeInt(argBytes.length);
+                        out.write(argBytes);
                     }
-
                     out.flush();
 
-                    // -- READ RESPONSE --
                     byte status = in.readByte();
-                    String response = in.readUTF();
+                    int respLen = in.readInt();
+                    byte[] respBytes = new byte[respLen];
+                    in.readFully(respBytes);
 
-                    if (status == 1) {
-                        System.out.println(response);
-                    } else {
-                        System.out.println("(error): " + response);
-                    }
-                } catch(IOException e) {
-                    System.err.println("Error communicating with the server. Connection lost?");
+                    String response = new String(respBytes, StandardCharsets.UTF_8);
+                    System.out.println(status == 1 ? response : "(error): " + response);
+                } catch (Exception e) {
+                    System.err.println("Connection lost.");
+                    e.printStackTrace();
                     break;
                 }
             }
