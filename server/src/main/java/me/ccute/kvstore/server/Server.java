@@ -52,7 +52,7 @@ public class Server {
                         .channel(NioServerSocketChannel.class)
                         .childHandler(new ChannelInitializer<SocketChannel>() {
                             @Override
-                            protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            protected void initChannel(SocketChannel socketChannel) {
                                 socketChannel.pipeline().addLast(new KvStoreDecoder());
                                 socketChannel.pipeline().addLast(new KvHandler(commands, dbmap, aof));
                             }

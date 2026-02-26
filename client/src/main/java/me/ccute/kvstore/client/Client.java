@@ -54,7 +54,7 @@ public class Client {
                     System.out.println(status == 1 ? response : "(error): " + response);
                 } catch (Exception e) {
                     System.err.println("Connection lost.");
-                    e.printStackTrace();
+                    System.err.println(e.getMessage());
                     break;
                 }
             }

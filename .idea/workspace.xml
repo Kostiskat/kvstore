@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sdk/java/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sdk/java/src/main/java/me/ccute/kvstore/sdk/SDK.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/utils/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/client/BenchmarkClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/me/ccute/kvstore/client/BenchmarkClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/me/ccute/kvstore/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/client/parser/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/me/ccute/kvstore/client/parser/Tokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/commands/BaseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/commands/BaseCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/commands/DelCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/commands/DelCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/commands/GetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/commands/GetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/commands/IncrCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/commands/IncrCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/commands/SetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/commands/SetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/netty/KvHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/netty/KvHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/netty/KvStoreDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/netty/KvStoreDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/netty/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/netty/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/storage/AOFHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/storage/AOFHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ccute/kvstore/server/utils/Logger.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3ACrqMioCiHjZgQ4GUD5LFF1R3K" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.BenchmarkClient.executor": "Run",
+    "Application.Server.executor": "Run",
+    "Docker.Dockerfile.executor": "Run",
+    "Maven.kvstore [install].executor": "Run",
+    "Maven.kvstore-parent [install].executor": "Run",
+    "Maven.kvstore-server [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "aof-async",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/kostis/Documents/GitHub/kvstore/client",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/main/java/me/ccute/kvstore/client" />
+      <recent name="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server" />
+      <recent name="$PROJECT_DIR$/server/src/main/java" />
+      <recent name="$PROJECT_DIR$/server" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="me.ccute.kvstore.client" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="" />
+      <created>1772107582839</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772107582839</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -53,7 +53,7 @@ public class KvHandler extends SimpleChannelInboundHandler<Request> {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        cause.printStackTrace();
+        System.err.println(cause.getMessage());
         ctx.close();
     }
 }

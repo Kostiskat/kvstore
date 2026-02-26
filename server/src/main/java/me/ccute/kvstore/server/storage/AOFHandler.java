@@ -72,13 +72,14 @@ public class AOFHandler {
         }
     }
 
+    @SuppressWarnings("InfiniteLoopStatement")
     public void recover(Map<String, String> db, Map<String, BaseCommand> commands) throws IOException {
         if (!file.exists()) return;
         System.out.println(Logger.toLogMessage("Recovering data from disk..."));
 
         int count = 0;
         try(DataInputStream in = new DataInputStream(new FileInputStream(file))) {
-            // This isn't infinite, as it eventually reaches the EOFException
+            // The SuppressWarning annotation refers to this loop, which supposedly never finishes, but exits at EOFException when the file ends.
             while (true) {
                int cmdLen = in.readInt();
                byte[] cmdBytes = new byte[cmdLen];
@@ -102,7 +103,7 @@ public class AOFHandler {
                }
             }
         } catch (EOFException e) {
-            // End of file reached
+            // End of file reached : this is the point where the while loop ends.
         }
         System.out.println(Logger.toLogMessage("Recovery completed! Loaded " + count + " keys."));
     }
