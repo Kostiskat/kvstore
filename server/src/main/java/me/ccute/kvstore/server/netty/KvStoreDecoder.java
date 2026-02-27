@@ -8,11 +8,15 @@ import io.netty.handler.codec.ReplayingDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import me.ccute.kvstore.common.Request;
 
 public class KvStoreDecoder extends ReplayingDecoder<Void> {
 
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) {
+
+        long requestId = byteBuf.readLong();
+
         String cmd = readLengthPrefixedString(byteBuf);
 
         int argCount = byteBuf.readInt();
@@ -22,7 +26,7 @@ public class KvStoreDecoder extends ReplayingDecoder<Void> {
             args.add(readLengthPrefixedString(byteBuf));
         }
 
-        Request request = new Request(cmd, args.toArray(new String[0]));
+        Request request = new Request(requestId, cmd, args.toArray(new String[0]));
         list.add(request);
     }
 

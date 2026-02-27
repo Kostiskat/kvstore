@@ -24,5 +24,5 @@ COPY --from=builder /app/server/target/kvstore-server.jar kvstore-srv.jar
 ENV PORT=6379
 EXPOSE 6379
 
-# Using ZGC for high throughput (118k OPS)
+# Using ZGC for high throughput
 CMD ["java", "-XX:+UseZGC", "-XX:+ZGenerational", "-jar", "kvstore-srv.jar"]

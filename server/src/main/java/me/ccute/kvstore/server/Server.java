@@ -11,6 +11,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import me.ccute.kvstore.server.commands.*;
 import me.ccute.kvstore.server.netty.KvHandler;
 import me.ccute.kvstore.server.netty.KvStoreDecoder;
+import me.ccute.kvstore.server.netty.ResponseEncoder;
 import me.ccute.kvstore.server.storage.AOFHandler;
 import me.ccute.kvstore.server.utils.Logger;
 
@@ -54,6 +55,7 @@ public class Server {
                             @Override
                             protected void initChannel(SocketChannel socketChannel) {
                                 socketChannel.pipeline().addLast(new KvStoreDecoder());
+                                socketChannel.pipeline().addLast(new ResponseEncoder());
                                 socketChannel.pipeline().addLast(new KvHandler(commands, dbmap, aof));
                             }
                         })

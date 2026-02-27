@@ -11,7 +11,15 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kvstore-client</artifactId>
+    <artifactId>kvstore-cli</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>me.ccute.kvstore</groupId>
+            <artifactId>kvstore-sdk</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
     <properties>
         <java.version>25</java.version>

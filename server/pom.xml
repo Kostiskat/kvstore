@@ -23,6 +23,12 @@
             <artifactId>netty-all</artifactId>
             <version>4.2.9.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>me.ccute.kvstore</groupId>
+            <artifactId>kvstore-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,14 +1,15 @@
 package me.ccute.kvstore.server.netty;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import me.ccute.kvstore.common.Response;
 import me.ccute.kvstore.server.commands.BaseCommand;
 import me.ccute.kvstore.server.storage.AOFHandler;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import me.ccute.kvstore.common.Request;
 
 public class KvHandler extends SimpleChannelInboundHandler<Request> {
 
@@ -37,18 +38,10 @@ public class KvHandler extends SimpleChannelInboundHandler<Request> {
             status = 0; // Error
         }
 
-        sendResponse(ctx, status, result);
-    }
+        byte[] payload = result.getBytes(StandardCharsets.UTF_8);
+        Response response = new Response(request.requestId, status, payload);
 
-    private void sendResponse(ChannelHandlerContext ctx, byte status, String message) {
-        ByteBuf responseBuf = ctx.alloc().buffer();
-        byte[] messageBytes = message.getBytes(StandardCharsets.UTF_8);
-
-        responseBuf.writeByte(status);
-        responseBuf.writeInt(messageBytes.length);
-        responseBuf.writeBytes(messageBytes);
-
-        ctx.writeAndFlush(responseBuf);
+        ctx.writeAndFlush(response);
     }
 
     @Override
