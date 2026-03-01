@@ -2,6 +2,8 @@
 icon: lucide/rocket
 ---
 
+documentation goes here
+
 # Get started
 
 For full documentation visit [zensical.org](https://zensical.org/docs/).
