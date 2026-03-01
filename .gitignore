@@ -17,6 +17,9 @@ dependency-reduced-pom.xml
 *.iml
 *.ipr
 
+venv/
+site/
+
 ### AOF File ###
 db.aof
 
