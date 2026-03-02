@@ -301,7 +301,7 @@ toggle.name = "Switch to light mode"
 # The "extra" section contains miscellaneous settings.
 # ----------------------------------------------------------------------------
 [[project.extra.social]]
-#icon = "fontawesome/brands/github"
+icon = "fontawesome/brands/github"
 link = "https://github.com/Kostiskat/kvstore"
 
 
