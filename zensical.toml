@@ -12,6 +12,13 @@
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
 site_name = "kvstore"
+repo_url = "https://github.com/Kostiskat/kvstore"
+repo_name = "Kostiskat/kvstore"
+
+nav = [
+    {"Home" = "index.md"},
+    {"Contributing" = "contributors.md"}
+]
 
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
@@ -215,12 +222,12 @@ features = [
     # When tabs are enabled, top-level sections are rendered in a menu layer
     # below the header for viewports above 1220px, but remain as-is on mobile.
     # https://zensical.org/docs/setup/navigation/#navigation-tabs
-    #"navigation.tabs",
+    "navigation.tabs",
 
     # When sticky tabs are enabled, navigation tabs will lock below the header
     # and always remain visible when scrolling down.
     # https://zensical.org/docs/setup/navigation/#sticky-navigation-tabs
-    #"navigation.tabs.sticky",
+    "navigation.tabs.sticky",
 
     # A back-to-top button can be shown when the user, after scrolling down,
     # starts to scroll up again.

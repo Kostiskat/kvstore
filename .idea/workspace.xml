@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/install.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/contributors.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/docs.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/systemd/system/kvstore.service" beforeDir="false" afterPath="$PROJECT_DIR$/etc/systemd/system/kvstore.service" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/markdown.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zensical.toml" beforeDir="false" afterPath="$PROJECT_DIR$/zensical.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
