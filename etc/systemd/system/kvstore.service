@@ -1,17 +1,12 @@
 [Unit]
-Description=kvstore High-Performance Database
+Description=KvStore High-Performance Database
 After=network.target
-StartLimitBurst=5
-StartLimitIntervalSec=60
 
 [Service]
-User=ubuntu
 WorkingDirectory=/opt/kvstore
-ExecStart=/usr/bin/java -jar server.jar
-
+ExecStart=/usr/bin/java -jar kvstore.jar
 Restart=on-failure
 RestartSec=3
 
 [Install]
 WantedBy=multi-user.target
-

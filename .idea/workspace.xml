@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="" />
+    <list default="true" id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/systemd/system/kvstore.service" beforeDir="false" afterPath="$PROJECT_DIR$/etc/systemd/system/kvstore.service" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +55,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/home/kostis/.local/share/JetBrains/IntelliJIdea2025.3/Shell Script/shellcheck&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/kostis/Documents/GitHub/kvstore/client&quot;,
@@ -75,7 +80,7 @@
       <recent name="me.ccute.kvstore.client" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.BenchmarkClient">
     <configuration name="BenchmarkClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="me.ccute.kvstore.client.BenchmarkClient" />
       <module name="kvstore-cli" />
