@@ -32,30 +32,6 @@
                     <target>25</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.5.1</version>
-
-                <inherited>false</inherited>
-
-                <executions>
-                    <execution>
-                        <id>generate-doxygen</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <executable>doxygen</executable>
-                    <workingDirectory>${project.basedir}</workingDirectory>
-                    <arguments>
-                        <argument>Doxyfile</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
