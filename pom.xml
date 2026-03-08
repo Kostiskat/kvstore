@@ -6,12 +6,22 @@
 
     <properties>
         <java.version>25</java.version>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
     </properties>
 
     <groupId>me.ccute.kvstore</groupId>
     <artifactId>kvstore</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.sandydunlop</groupId>
+            <artifactId>markista</artifactId>
+            <version>0.3.1</version>
+        </dependency>
+    </dependencies>
 
     <modules>
         <module>sdk/java</module>
@@ -27,6 +37,20 @@
                 <configuration>
                     <source>25</source>
                     <target>25</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <windowTitle>${project.name} API Documentation</windowTitle>
+                    <docTitle>${project.name} API Documentation</docTitle>
+                    <additionalparam>-doclet io.github.sandydunlop.markista.doclet.MarkdownDoclet</additionalparam>
+                    <additionalparam>-private</additionalparam>
+                    <additionalparam>-link</additionalparam>
+                    <additionalparam>-verbose</additionalparam>
                 </configuration>
             </plugin>
         </plugins>

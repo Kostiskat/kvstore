@@ -20,6 +20,9 @@ dependency-reduced-pom.xml
 venv/
 site/
 
+docs/latex
+docs/html
+
 ### AOF File ###
 db.aof
 
