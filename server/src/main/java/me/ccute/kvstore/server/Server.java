@@ -15,13 +15,16 @@ import me.ccute.kvstore.server.netty.ResponseEncoder;
 import me.ccute.kvstore.server.storage.AOFHandler;
 import me.ccute.kvstore.server.storage.BoundedConcurrentMap;
 import me.ccute.kvstore.server.utils.ConfigLoader;
-import me.ccute.kvstore.server.utils.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Server {
+
+    private static final Logger logger = LoggerFactory.getLogger(Server.class);
 
     private static final int PORT = ConfigLoader.getInt("port", 6379);
     private static final String BIND_IP = ConfigLoader.getString("bind", "127.0.0.1");
@@ -72,19 +75,19 @@ public class Server {
                         .childOption(ChannelOption.TCP_NODELAY, true);
 
                 Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                    System.out.println(Logger.toLogMessage("SIGTERM received. Initiating graceful shutdown..."));
+                    logger.info("SIGTERM received. Initiating graceful shutdown...");
                     try {
                         bossGroup.shutdownGracefully().sync();
                         workerGroup.shutdownGracefully().sync();
 
                         aof.close();
 
-                        System.out.println(Logger.toLogMessage("Database shut down!"));
+                        logger.info("Database shut down!");
                     } catch (InterruptedException | IOException e) {
                         System.err.println("Shutdown interrupted: " + e.getMessage());
                     }
                 }));
-                System.out.println(Logger.toLogMessage("Database running on port " + PORT));
+                logger.info("Database running on port {}", PORT);
 
                 b.bind(BIND_IP, PORT).sync().channel().closeFuture().sync();
             } catch (InterruptedException e) {

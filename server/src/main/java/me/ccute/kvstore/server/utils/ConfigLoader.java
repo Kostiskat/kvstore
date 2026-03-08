@@ -1,19 +1,25 @@
 package me.ccute.kvstore.server.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigLoader {
+
+    private static final Logger logger = LoggerFactory.getLogger(ConfigLoader.class);
+
     private static final Properties props = new Properties();
 
     // This static blocks runs once when the server boots up
     static {
         try (FileInputStream fis = new FileInputStream("conf/kvstore.conf")) {
             props.load(fis);
-            System.out.println(Logger.toLogMessage("Loaded configuration from conf/kvstore.conf"));
+            logger.info("Loaded configuration from conf/kvstore.conf");
         } catch(IOException e) {
-            System.out.println(Logger.toLogMessage("Warning: conf/kvstore.conf not loaded. Using default values..."));
+            logger.warn("Warning: conf/kvstore.conf not loaded. Using default values...");
         }
     }
 

@@ -18,7 +18,6 @@ dependency-reduced-pom.xml
 *.ipr
 
 venv/
-site/
 
 docs/latex
 docs/html

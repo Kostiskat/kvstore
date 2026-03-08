@@ -536,7 +536,7 @@ EXTRACT_PRIV_VIRTUAL   = NO
 # scope will be included in the documentation.
 # The default value is: NO.
 
-EXTRACT_PACKAGE        = NO
+EXTRACT_PACKAGE        = YES
 
 # If the EXTRACT_STATIC tag is set to YES, all static members of a file will be
 # included in the documentation.
@@ -945,6 +945,7 @@ WARN_LOGFILE           =
 
 INPUT                  = sdk/java/src/main/java/me/ccute/kvstore/sdk/client \
                          sdk/java/src/main/java/me/ccute/kvstore/sdk/exceptions \
+                         common/src/main/java \
                          docs/pages/home.md \
                          CONTRIBUTING.md
 

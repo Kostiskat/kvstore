@@ -1,7 +1,8 @@
 package me.ccute.kvstore.server.storage;
 
 import me.ccute.kvstore.server.commands.BaseCommand;
-import me.ccute.kvstore.server.utils.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -9,6 +10,9 @@ import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class AOFHandler {
+
+    private static final Logger logger = LoggerFactory.getLogger(AOFHandler.class);
+
     private final File file;
     private DataOutputStream out;
 
@@ -35,7 +39,7 @@ public class AOFHandler {
 
         boolean accepted = queue.offer(new LogEntry(commandName, args));
         if (!accepted) {
-            System.err.println(Logger.toLogMessage("WARNING! AOF Queue is full! Dropping log for " + commandName));
+            logger.error("WARNING! AOF Queue is full! Dropping log for {}", commandName);
         }
     }
 
@@ -53,7 +57,7 @@ public class AOFHandler {
                 Thread.currentThread().interrupt();
                 break;
             } catch (IOException e) {
-                System.err.println(Logger.toLogMessage("Fatal error writing to AOF: " + e.getMessage()));
+                logger.error("Fatal error writing to AOF: {}", e.getMessage());
             }
         }
     }
@@ -75,7 +79,7 @@ public class AOFHandler {
     @SuppressWarnings("InfiniteLoopStatement")
     public void recover(Map<String, String> db, Map<String, BaseCommand> commands) throws IOException {
         if (!file.exists()) return;
-        System.out.println(Logger.toLogMessage("Recovering data from disk..."));
+        logger.info("Recovering data from disk...");
 
         int count = 0;
         try(DataInputStream in = new DataInputStream(new FileInputStream(file))) {
@@ -105,7 +109,7 @@ public class AOFHandler {
         } catch (EOFException e) {
             // End of file reached : this is the point where the while loop ends.
         }
-        System.out.println(Logger.toLogMessage("Recovery completed! Loaded " + count + " keys."));
+        logger.info("Recovery completed! Loaded {} keys.", count);
     }
 
     public void close() throws IOException {
