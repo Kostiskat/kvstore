@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/assets/kv.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Doxyfile" beforeDir="false" afterPath="$PROJECT_DIR$/Doxyfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/storage/AOFHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/storage/AOFHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/utils/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/utils/ConfigLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/utils/Logger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
