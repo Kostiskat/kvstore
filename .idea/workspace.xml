@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="" />
+    <list default="true" id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/assets/kvstore_logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/pages/home.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doxyfile" beforeDir="false" afterPath="$PROJECT_DIR$/Doxyfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +50,7 @@
     "Application.Client.executor": "Run",
     "Application.Server.executor": "Run",
     "Docker.Dockerfile.executor": "Run",
+    "Maven.kvstore [compile].executor": "Run",
     "Maven.kvstore [install].executor": "Run",
     "Maven.kvstore [org.apache.maven.plugins:maven-javadoc-plugin:3.3.1:javadoc].executor": "Run",
     "Maven.kvstore-parent [install].executor": "Run",
@@ -69,6 +77,7 @@
       <recent name="$PROJECT_DIR$/client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/assets" />
       <recent name="$PROJECT_DIR$/client/src/main/java/me/ccute/kvstore/client" />
       <recent name="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server" />
       <recent name="$PROJECT_DIR$/server/src/main/java" />

@@ -15,13 +15,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>io.github.sandydunlop</groupId>
-            <artifactId>markista</artifactId>
-            <version>0.3.1</version>
-        </dependency>
-    </dependencies>
 
     <modules>
         <module>sdk/java</module>
@@ -40,17 +33,27 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.1</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.1</version>
+
+                <inherited>false</inherited>
+
+                <executions>
+                    <execution>
+                        <id>generate-doxygen</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <windowTitle>${project.name} API Documentation</windowTitle>
-                    <docTitle>${project.name} API Documentation</docTitle>
-                    <additionalparam>-doclet io.github.sandydunlop.markista.doclet.MarkdownDoclet</additionalparam>
-                    <additionalparam>-private</additionalparam>
-                    <additionalparam>-link</additionalparam>
-                    <additionalparam>-verbose</additionalparam>
+                    <executable>doxygen</executable>
+                    <workingDirectory>${project.basedir}</workingDirectory>
+                    <arguments>
+                        <argument>Doxyfile</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
