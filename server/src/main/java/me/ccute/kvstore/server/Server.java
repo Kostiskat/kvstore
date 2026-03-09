@@ -46,6 +46,7 @@ public class Server {
         commands.put("SET", new SetCommand());
         commands.put("DEL", new DelCommand());
         commands.put("INCR", new IncrCommand());
+        commands.put("EXISTS", new ExistsCommand());
     }
 
     static void main() {

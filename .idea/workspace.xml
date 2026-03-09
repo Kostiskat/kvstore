@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="801b16d1-327f-4731-bac2-34e9afd6fd10" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/docs/assets/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/commands/ExistsCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/java/src/main/java/me/ccute/kvstore/sdk/client/KvClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/java/src/main/java/me/ccute/kvstore/sdk/client/KvClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdk/java/src/main/java/me/ccute/kvstore/sdk/client/NettyKvClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/sdk/java/src/main/java/me/ccute/kvstore/sdk/client/NettyKvClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ccute/kvstore/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,13 +27,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="workOffline" value="true" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -64,7 +62,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -83,7 +81,7 @@
       <recent name="me.ccute.kvstore.client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BenchmarkClient">
+  <component name="RunManager">
     <configuration name="BenchmarkClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="me.ccute.kvstore.client.BenchmarkClient" />
       <module name="kvstore-cli" />
@@ -135,5 +133,9 @@
       <updated>1772107582839</updated>
     </task>
     <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

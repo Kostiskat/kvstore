@@ -56,6 +56,14 @@ public interface KvClient extends AutoCloseable {
     void increment(String key, int increment);
 
     /**
+     * A simple and quick way to check if a key exists in the database.
+     *
+     * @param key The key to search for
+     * @return Whether the key exists
+     */
+    boolean exists(String key);
+
+    /**
      * Increments the numeric value stored at the specified key by exactly 1.
      * <p>
      * This is a convenience method equivalent to calling

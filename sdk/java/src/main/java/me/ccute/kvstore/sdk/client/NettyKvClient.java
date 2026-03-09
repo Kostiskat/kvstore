@@ -98,6 +98,15 @@ public class NettyKvClient implements KvClient {
     }
 
     @Override
+    public boolean exists(String key) {
+        if (key == null || key.isEmpty()) throw new IllegalArgumentException("Key cannot be null or empty");
+
+        String response = execute("EXISTS", key);
+
+        return (response.equals("1"));
+    }
+
+    @Override
     public void increment(String key) {
         increment(key, 1);
     }
