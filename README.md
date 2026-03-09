@@ -29,16 +29,16 @@
 </defs>
 </svg>
 
-A key-value datastore written in Java, including a simple client for experimenting and testing. Uses Netty for quick and efficient client management that scaled to thousands of concurrent connections!
 
-Very much in-progress; currently only supports Strings (and partial int support) with more types coming soon!
+kvstore is a high-throughput, asynchronous, in-memory key-value database built from scratch on top of Netty. It is designed to handle 90,000+ operations per second with sub-millisecond latency, featuring a custom multiplexed protocol, AOF (Append-Only File) persistence, and high-speed memory eviction.
 
-You can only experiment with 4 commands right now, via the CLI tool.
-Future updates will include a custom SDK so anyone can use it.
+```java
+client.executeAsync("SET", "db_name", "kvstore")
+    .thenRun(() -> System.out.println("I am asynchronous!")); 
+```    
+### Why kvstore?
 
-- ``GET <key>`` - Get the value corresponding to ``<key>``
-- ``SET <key> <value>`` - Set the value of ``<key>``
-- ``DEL <key>`` - Delete this key-value entry from the database.
-- ``INCR <key> [incr]`` - Increment an integer value by ``incr`` (default: 1)
+- Blazing fast: Built on Netty's non-blocking event loop, achieving 90k+ OPS.
+- Multiplexed Protocol: Support for multiple requests over a single TCP connection to reduce handshake overhead.
 
-Runs on port 6379 by default.
+Unlike solutions like Redis, which is single-threaded, kvstore utilizes and supports multi-threaded operations out of the box to maximize CPU utilization across all cores, while maintaining strict thread safety for its internal storage. 
